@@ -11,7 +11,6 @@ export default function Home() {
     if (event.key === "Enter") {
       axios.get(baseUrl).then((response) => {
         setData(response.data);
-        console.log(response.data);
       });
       setLocation("");
     }
