@@ -1,17 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [location, setLocation] = useState(" ");
   const [guide, setGuide] = useState(true);
+  const [bottom, setBottom] = useState(false);
 
-  const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
+  {
+    /*
+ const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
       axios.get(baseUrl).then((response) => {
         setData(response.data);
+      });
+      setLocation("");
+      setGuide(false);
+    }
+  };
+ */
+  }
+
+  const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
+
+  const searchLocation = (event) => {
+    if (event.key === "Enter") {
+      axios.get(baseUrl).then((response) => {
+        setData(response.data);
+        setBottom(true);
       });
       setLocation("");
       setGuide(false);
@@ -48,7 +66,7 @@ export default function Home() {
                 <div>
                   {data.main ? (
                     <h1 className="text-[3rem] text-[#fff] mt-[1rem] temp">
-                      {data.main.temp}°
+                      {data.main.temp.toFixed()}°F
                     </h1>
                   ) : null}
                 </div>
@@ -71,38 +89,40 @@ export default function Home() {
                 />
               ) : null}
             </div>
-            <div className="h-[auto] w-[330px] p-[20px] rounded-[20px] absolute bottom-[2rem] right-0 left-0 my-0 mx-auto flex justify-between items-center bottom-container">
-              <div className=" text-center">
-                {data.main ? (
-                  <p className="text-[#fff] text-[22px] feels-like">
-                    {data.main.feels_like}
+            {bottom ? (
+              <div className="h-[auto] w-[330px] p-[20px] rounded-[20px] absolute bottom-[2rem] right-0 left-0 my-0 mx-auto flex justify-between items-center bottom-container">
+                <div className=" text-center">
+                  {data.main ? (
+                    <p className="text-[#fff] text-[22px] feels-like">
+                      {data.main.feels_like.toFixed()}°F
+                    </p>
+                  ) : null}
+                  <p className="text-[#fff] text-[13px] feels-like-text">
+                    Feels Like
                   </p>
-                ) : null}
-                <p className="text-[#fff] text-[13px] feels-like-text">
-                  Feels Like
-                </p>
-              </div>
-              <div className="text-center">
-                {data.main ? (
-                  <p className="text-[#fff] text-[22px] humidity">
-                    {data.main.humidity}
+                </div>
+                <div className="text-center">
+                  {data.main ? (
+                    <p className="text-[#fff] text-[22px] humidity">
+                      {data.main.humidity}%
+                    </p>
+                  ) : null}
+                  <p className="text-[#fff] text-[13px] humidity-text">
+                    Humidity
                   </p>
-                ) : null}
-                <p className="text-[#fff] text-[13px] humidity-text">
-                  Humidity
-                </p>
-              </div>
-              <div className="text-center">
-                {data.wind ? (
-                  <p className="text-[#fff] text-[22px] wind-speed">
-                    {data.wind.speed}
+                </div>
+                <div className="text-center">
+                  {data.wind ? (
+                    <p className="text-[#fff] text-[22px] wind-speed">
+                      {data.wind.speed.toFixed()} MPH
+                    </p>
+                  ) : null}
+                  <p className="text-[#fff] text-[13px] wind-speed-text">
+                    Wind Speed
                   </p>
-                ) : null}
-                <p className="text-[#fff] text-[13px] wind-speed-text">
-                  Wind Speed
-                </p>
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
         </div>
         {/*
