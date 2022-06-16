@@ -4,6 +4,7 @@ import axios from "axios";
 export default function Home() {
   const [data, setData] = useState([]);
   const [location, setLocation] = useState(" ");
+  const [guide, setGuide] = useState(true);
 
   const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
@@ -13,6 +14,7 @@ export default function Home() {
         setData(response.data);
       });
       setLocation("");
+      setGuide(false);
     }
   };
 
@@ -27,9 +29,16 @@ export default function Home() {
               value={location}
               onChange={(event) => setLocation(event.target.value)}
               onKeyPress={searchLocation}
-              className=" w-[220px] py-[10px] px-[17px] outline-none rounded-[50px] border-none shadow-2xl"
+              className=" w-[250px] py-[10px] px-[17px] outline-none rounded-[50px] border-none shadow-2xl mb-[3rem]"
             />
           </div>
+          {guide ? (
+            <div className="w-[250px] h-[auto] my-0 mx-auto p-[20px] rounded-[20px] guide">
+              <p className="text-[#fff] font-bold">
+                Enter a Country, Continent or a state into the search bar above
+              </p>
+            </div>
+          ) : null}
           <div className="mt-[3rem] z-20">
             <div className="flex justify-between items-center w-full mb-[4rem]">
               <div className=" w-[100%] text-left">
