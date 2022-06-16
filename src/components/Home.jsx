@@ -28,7 +28,7 @@ export default function Home() {
             <input
               type="search"
               placeholder="Enter country or city"
-              value={location}
+              value={location.trim()}
               onChange={(event) => setLocation(event.target.value)}
               onKeyPress={searchLocation}
               className=" w-[250px] py-[10px] px-[17px] outline-none rounded-[50px] border-none shadow-2xl mb-[3rem]"
