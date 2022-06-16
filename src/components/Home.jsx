@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="main-container bg-[url('https://images.pexels.com/photos/573238/pexels-photo-573238.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center bg-cover w-full h-screen relative flex items-center justify-center overflow-hidden">
+      <div className="main-container bg-[url('https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center bg-cover w-full h-screen relative flex items-center justify-center overflow-hidden">
         <div className="z-20 overlay main-2">
           <div className="flex justify-center items-center">
             <input
