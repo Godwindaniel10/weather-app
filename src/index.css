@@ -53,3 +53,11 @@
     margin: 0 auto;
   }
 }
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 600px) {
+  .main-container {
+    background-image: url('https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-position: center;
+    background-size: cover;
+  }
+}
