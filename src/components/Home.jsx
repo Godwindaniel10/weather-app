@@ -7,22 +7,6 @@ export default function Home() {
   const [guide, setGuide] = useState(true);
   const [bottom, setBottom] = useState(false);
 
-  {
-    /*
- const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
-
-  const searchLocation = (event) => {
-    if (event.key === "Enter") {
-      axios.get(baseUrl).then((response) => {
-        setData(response.data);
-      });
-      setLocation("");
-      setGuide(false);
-    }
-  };
- */
-  }
-
   const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
   const searchLocation = (event) => {
