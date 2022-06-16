@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="main-container bg-[url('https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center bg-cover w-full h-screen relative flex items-center justify-center overflow-hidden">
+      <div className="main-container bg-[url('https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center bg-cover w-full h-screen relative flex items-center justify-center overflow-hidden">
         <div className="z-20 overlay main-2">
           <div className="flex justify-center items-center">
             <input
@@ -31,7 +31,7 @@ export default function Home() {
             />
           </div>
           <div className="mt-[3rem] z-20">
-            <div className="flex justify-between items-center w-full">
+            <div className="flex justify-between items-center w-full mb-[4rem]">
               <div className=" w-[100%] text-left">
                 <div>
                   <p className="text-[#fff] text-[22px]">{data.name}</p>
@@ -39,7 +39,7 @@ export default function Home() {
                 <div>
                   {data.main ? (
                     <h1 className="text-[3rem] text-[#fff] mt-[1rem] temp">
-                      {data.main.temp} °
+                      {data.main.temp}°
                     </h1>
                   ) : null}
                 </div>
@@ -51,6 +51,16 @@ export default function Home() {
                   </h1>
                 ) : null}
               </div>
+            </div>
+            <div className="w-[80px] h-[80px] flex justify-center items-center my-0 mx-[auto]">
+              {data.weather ? (
+                <img
+                  src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+                  alt="weather icon"
+                  className="object-cover"
+                  width={300}
+                />
+              ) : null}
             </div>
             <div className="h-[auto] w-[330px] p-[20px] rounded-[20px] absolute bottom-[2rem] right-0 left-0 my-0 mx-auto flex justify-between items-center bottom-container">
               <div className=" text-center">
