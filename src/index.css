@@ -33,7 +33,6 @@
 
 .overlay {
   background-image: linear-gradient(to bottom right,#000000c3,#000000c6);
-  opacity: .8;
   position: absolute;
   bottom: 0;
   left: 0;
